@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- ========== Configuración general ==========
+
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo: Formulario con Validación</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .contenedor {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #1E90FF;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .formulario__campo {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #00BFFF;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #1E90FF;
+      box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .campo__ayuda {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.85rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .mensaje-error {
+      display: block;
+      margin-top: 5px;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.925rem;
+      color: red;
+    }
+
+    .campo__completo--error {
+      border: 2px solid red !important;
+    }
+
+    .checkbox-grupo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .checkbox-texto {
+      flex: 1;
+    }
+
+    .boton {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .boton:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(30, 144, 255, 0.4);
+    }
+
+    .boton:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .exito {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .exito.mostrar {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .campo__ayuda {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.85rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .campo__ayuda--tooltip {
+      position: absolute;
+      background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+      margin-top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: popupEntrada 0.3s ease;
+      pointer-events: auto;
+    }
+
+    .campo__ayuda--tooltip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #1E90FF;
+    }
+
+    @keyframes popupEntrada {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .requerido {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== Contenedor principal ==========
+
+  -->
+  <div class="contenedor">
+    <div class="exito" id="mensajeExito">
+      ✅ Formulario enviado exitosamente
+    </div>
+
+    <h1>📝 Formulario de Contacto</h1>
+
+    <form id="contactoForm" data-formulario novalidate>
+      <!-- ========== Campo Nombre ==========
+
+      -->
+      <div class="formulario__campo">
+        <label for="nombre">
+          Nombre completo <span class="requerido">*</span>
+        </label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          aria-required="true"
+          aria-describedby="ayuda-nombre error-nombre"
+        >
+        <span id="ayuda-nombre" class="campo__ayuda">
+          Mínimo 3 caracteres, solo letras
+        </span>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Campo Email ==========
+
+      -->
+      <div class="formulario__campo">
+        <label for="email">
+          Correo electrónico <span class="requerido">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          aria-required="true"
+          aria-describedby="ayuda-email error-email"
+        >
+        <span id="ayuda-email" class="campo__ayuda">
+          Formato: usuario@dominio.com
+        </span>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Campo Teléfono ==========
+
+      -->
+      <div class="formulario__campo">
+        <label for="telefono">
+          Teléfono <span class="requerido">*</span>
+        </label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          required
+          aria-required="true"
+          aria-describedby="ayuda-telefono error-telefono"
+        >
+        <span id="ayuda-telefono" class="campo__ayuda">
+          Ej: 555-123-4567
+        </span>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Campo Asunto ==========
+
+      -->
+      <div class="formulario__campo">
+        <label for="asunto">
+          Asunto <span class="requerido">*</span>
+        </label>
+        <select
+          id="asunto"
+          name="asunto"
+          required
+          aria-required="true"
+          aria-describedby="error-asunto"
+        >
+          <option value="">-- Selecciona un asunto --</option>
+          <option value="consulta">Consulta general</option>
+          <option value="soporte">Soporte técnico</option>
+          <option value="reclamo">Reclamo</option>
+          <option value="sugerencia">Sugerencia</option>
+        </select>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Campo Mensaje ==========
+
+      -->
+      <div class="formulario__campo">
+        <label for="mensaje">
+          Mensaje <span class="requerido">*</span>
+        </label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          required
+          aria-required="true"
+          aria-describedby="ayuda-mensaje error-mensaje"
+        ></textarea>
+        <span id="ayuda-mensaje" class="campo__ayuda">
+          Mínimo 20 caracteres
+        </span>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Checkbox Términos ==========
+
+      -->
+      <div class="formulario__campo">
+        <div class="checkbox-grupo">
+          <input
+            type="checkbox"
+            id="terminos"
+            name="terminos"
+            required
+            aria-required="true"
+            aria-describedby="error-terminos"
+          >
+          <label for="terminos" class="checkbox-texto">
+            Acepto los <a href="#">Términos y Condiciones</a> <span class="requerido">*</span>
+          </label>
+        </div>
+        <span class="mensaje-error" role="alert"></span>
+      </div>
+
+      <!-- ========== Botón Enviar ==========
+
+      -->
+      <button type="submit" class="boton">
+        Enviar Mensaje
+      </button>
+    </form>
+  </div>
+
+  <!-- ========== Scripts de validación ==========
+
+  -->
+  <script src="./js/tooltips.js"></script>
+  <script src="./js/validar-global.js"></script>
+  <script>
+    // ========== Configurar validación del formulario ==========
+
+    const formulario = document.getElementById("contactoForm");
+    const mensajeExito = document.getElementById("mensajeExito");
+
+    // ========== Definir reglas de validación ==========
+    const reglas = {
+      nombre: [
+        (v) => validarRequerido(v, "El nombre") || "",
+        (v) => validarMinimo(v, 3) || "",
+        validarSoloLetras
+      ],
+      email: [
+        (v) => validarRequerido(v, "El email") || "",
+        validarEmail
+      ],
+      telefono: [
+        (v) => validarRequerido(v, "El teléfono") || "",
+        validarTelefono
+      ],
+      asunto: [
+        (v) => validarRequerido(v, "El asunto") || ""
+      ],
+      mensaje: [
+        (v) => validarRequerido(v, "El mensaje") || "",
+        (v) => validarMinimo(v, 20) || ""
+      ],
+      terminos: [
+        (v) => {
+          if (!v) return "Debes aceptar los Términos y Condiciones";
+          return "";
+        }
+      ]
+    };
+
+    // ========== Aplicar validación automática ==========
+    configurarValidacionAutomatica(formulario, reglas, (formData) => {
+      // ========== Convertir FormData a objeto ==========
+      const datos = Object.fromEntries(formData);
+      
+      console.log("✅ Formulario válido. Datos:", datos);
+      
+      // ========== Mostrar mensaje de éxito ==========
+      mensajeExito.classList.add("mostrar");
+      
+      // ========== Simular envío al servidor ==========
+      setTimeout(() => {
+        // ========== Datos enviados al servidor ==========
+        console.log("Enviando:", datos);
+        
+        // ========== Limpiar formulario ==========
+        formulario.reset();
+        
+        // ========== Ocultar mensaje ==========
+        setTimeout(() => {
+          mensajeExito.classList.remove("mostrar");
+        }, 3000);
+      }, 1000);
+    });
+
+    // ========== Validación adicional personalizada ==========
+    const emailInput = document.getElementById("email");
+    emailInput.addEventListener("blur", () => {
+      // ========== Validación asincrónica ==========
+      // Ejemplo: verificar si el email ya existe
+      console.log("Verificando email:", emailInput.value);
+    });
+  </script>
+</body>
+</html>

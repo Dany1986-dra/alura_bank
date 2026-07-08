@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../../Escritorio/JS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JS"
+	}
+}
