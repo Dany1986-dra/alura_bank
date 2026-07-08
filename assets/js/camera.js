@@ -1,3 +1,5 @@
+// ========== CAMARA ==========
+//==== Variables =====
 const botonAbrirCamara = document.querySelector("[data-video-boton]");
 const campoCamara = document.querySelector("[data-camera]");
 const video = document.querySelector("[data-video]");
@@ -9,6 +11,7 @@ const mensaje = document.querySelector("[data-mensaje]");
 let imagenURL = "";
 const botonEnviar = document.querySelector("[data-enviar]");
 
+//==== Eventos =====
 botonAbrirCamara.addEventListener("click", async () => {
   const iniciarVideo = await navigator.mediaDevices.getUserMedia({
     video: true,

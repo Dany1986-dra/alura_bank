@@ -1,3 +1,4 @@
+// ========== VALIDACIONES DE EDAD ==========
 export default function esMayorDeEdad(campo) {
   const fechaNacimiento = new Date(campo.value);
  if(!validarEdad(fechaNacimiento)){
@@ -6,6 +7,7 @@ export default function esMayorDeEdad(campo) {
 
 }
 
+//========= Funciones ==========
 function validarEdad(fecha) {
   const fechaActual = new Date();
   const fechaMas18 = new Date(

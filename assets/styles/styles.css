@@ -10,9 +10,17 @@
 }
 
 body {
+    overflow-x: hidden;
     font-family: var(--fuente-principal);
     color: var(--black);
     font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 .encabezado__logo-link {
@@ -53,4 +61,8 @@ body {
     /* Al estar en foco, sí queremos diseño */
     border-style: solid !important;
     text-decoration: underline !important;
+}
+
+.skip-link {
+    display: none !important;
 }

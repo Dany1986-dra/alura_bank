@@ -2,17 +2,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 2em 1em;
+    padding: 0 2em;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    width: auto;
+    box-sizing: border-box       /* Permite que los elementos del header se acomoden en varias líneas si es necesario */
 }
 
 .encabezado-lista {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2.5rem;
+    justify-content: flex-end;
+    gap: 2.5em;
     font-size: 18px;
-    margin: 0 2em;
-    width: 100%;
+    margin: 0; /* Cambiamos el margin por 0 para liberar espacio */
+    
+    /* Quitamos el 100% para que no empuje el botón hacia afuera */
+    width: auto; 
+    flex-grow: 1;
 }
 
 .encabezado__logo-inicio {

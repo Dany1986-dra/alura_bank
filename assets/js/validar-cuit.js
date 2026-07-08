@@ -1,3 +1,4 @@
+// ========== VALIDACIONES DE CUIT ==========
 export default function esUnCUIT(campo) {
   const cuit = campo.value.replace(/\-/g, "");
   if (!tieneCaracteresRepetidos(cuit)) {

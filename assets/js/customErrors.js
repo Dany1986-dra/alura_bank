@@ -1,3 +1,6 @@
+// ========== VALIDACIONES ==========
+
+//==== Exportaciones =====
 export const tiposError = [
   "valueMissing",
   "typeMismatch",

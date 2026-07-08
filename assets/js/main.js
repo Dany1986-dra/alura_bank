@@ -1,10 +1,13 @@
+//========= Exportaciones de JS ==========
 import esUnCUIT from "./validar-cuit.js";
 import esMayorDeEdad from "./validar-edad.js";
 import { tiposError, mensajes } from "./customErrors.js";
 
+//==== Variables =====
 const camposDeFormulario = document.querySelectorAll("[required");
 const formulario = document.querySelector("[data-formulario]");
 
+//==== Eventos =====
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   const listaRespuestas = {
