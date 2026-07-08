@@ -1,6 +1,3 @@
-/* ========== Banner principal ==========
-
-*/
 .banner {
     background-image: url("../../img/banner_cliente.png");
     background-repeat: no-repeat;
@@ -12,9 +9,6 @@
     justify-content: center;
 }
 
-/* ========== Títulos destacados ==========
-
-*/
 .banner__titulo,
 .cuenta__titulo {
     font-weight: 600;
@@ -23,17 +17,11 @@
     line-height: 39px;
 }
 
-/* ========== Título del banner ==========
-
-*/
 .banner__titulo {
     width: 32%;
     margin: 0 3em
 }
 
-/* ========== Títulos de secciones ==========
-
-*/
 .servicios__titulo,
 .beneficios__titulo {
     font-size: 28px;
@@ -42,9 +30,6 @@
     margin: 1em 0;
 }
 
-/* ========== Lista de servicios ==========
-
-*/
 .lista-servicios {
     display: flex;
     flex-wrap: wrap;
@@ -52,9 +37,6 @@
     margin: 4em 0;
 }
 
-/* ========== Tarjetas de servicios ==========
-
-*/
 .item-servicios__titulo {
     background-color: var(--black);
     color: var(--white);
@@ -65,16 +47,10 @@
     border-radius: 0px 0px 20px 20px;
 }
 
-/* ========== Imagen de servicio ==========
-
-*/
 .item-servicios__imagen {
     display: block;
 }
 
-/* ========== Sección cuenta ==========
-
-*/
 .cuenta {
     background-image: url("../../img/banner_gato.png");
     background-repeat: no-repeat;
@@ -86,17 +62,11 @@
     align-items: center;
 }
 
-/* ========== Contenedor de cuenta ==========
-
-*/
 .cuenta__container {
     width: 80%;
     margin-left: 4em;
 }
 
-/* ========== Botón de cuenta ==========
-
-*/
 .cuenta__boton {
     display: block;
     margin-top: .5em;
@@ -112,9 +82,6 @@
     padding: 0.5em;
 }
 
-/* ========== Lista de beneficios ==========
-
-*/
 .beneficios-lista {
     display: flex;
     justify-content: space-around;
@@ -123,16 +90,10 @@
     text-align: center;
 }
 
-/* ========== Ítems de beneficios ==========
-
-*/
 .beneficios-lista__item {
     width: 20%;
 }
 
-/* ========== Íconos de beneficios ==========
-
-*/
 .beneficios__icono {
     width: 80px;
     height: 80px;
@@ -141,37 +102,22 @@
     display: inline-block;
 }
 
-/* ========== Ícono presente ==========
-
-*/
 .icono-presente {
     background-image: url('../../img/presente.png');
 }
 
-/* ========== Ícono retiro ==========
-
-*/
 .icono-retiro {
     background-image: url('../../img/retiro.png');
 }
 
-/* ========== Ícono estrella ==========
-
-*/
 .icono-estrella {
     background-image: url('../../img/estrella.png')
 }
 
-/* ========== Ícono gato ==========
-
-*/
 .icono-gato {
     background-image: url('../../img/gato.png')
 }
 
-/* ========== Título de beneficio ==========
-
-*/
 .beneficios-lista__titulo {
     font-weight: 600;
     font-size: 20px;
@@ -180,9 +126,6 @@
     margin: .5em 0;
 }
 
-/* ========== Adaptación responsive ==========
-
-*/
 @media screen and (max-width: 798px) {
     .beneficios-lista {
         display: block;

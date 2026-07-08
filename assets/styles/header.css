@@ -1,27 +1,19 @@
-/* ========== Encabezado ==========
-
-*/
 .encabezado {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 2em 1em;
 }
 
-/* ========== Lista del encabezado ==========
-
-*/
 .encabezado-lista {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    flex-basis: 100%;
+    justify-content: space-between;
+    gap: 2.5rem;
     font-size: 18px;
     margin: 0 2em;
 }
 
-/* ========== Logo principal ==========
-
-*/
 .encabezado__logo-inicio {
     font-family: var(--fuente-logo);
     font-size: 28px;
@@ -29,50 +21,32 @@
     color: var(--azul-claro);
 }
 
-/* ========== Logo secundario ==========
-
-*/
 .encabezado__logo-final {
     font-weight: 400;
     font-style: italic;
 }
 
-/* ========== Buscador ==========
-
-*/
 .encabezado__buscar {
     border: 2px solid #2f2f2f;
     border-radius: 20px;
     padding: .7em 1em;
-    width: 20vw;
+    width: 280px;
+    outline: none;
 }
 
-/* ========== Placeholder del buscador ==========
-
-*/
 .encabezado__buscar::placeholder {
     font-size: 18px;
     background: url("../img/icon_buscar.png") no-repeat 95% center;
 }
 
-/* ========== Enlaces del encabezado ==========
-
-*/
 .encabezado-lista__item a {
     text-decoration: none;
 }
 
-/* ========== Links del menú ==========
-
-*/
 .encabezado-lista__link {
     color: var(--black);
-    text-underline-offset: 0.2em;
 }
 
-/* ========== Botones del encabezado ==========
-
-*/
 .encabezado-lista__item-boton {
     font-weight: 600;
     border-radius: 20px;
@@ -81,22 +55,11 @@
     border: var(--azul-claro) 2px solid;
 }
 
-/* ========== Botón primario ==========
-
-*/
 .encabezado-lista__item-boton--azul {
     background-color: var(--azul-claro);
     color: var(--white);
 }
 
-.encabezado-lista__item a:hover,
-.encabezado-lista__item a:focus-visible {
-    text-decoration: underline;
-}
-
-/* ========== Adaptación responsive ==========
-
-*/
 @media screen and (max-width: 900px) {
     .encabezado {
         margin: 2em;

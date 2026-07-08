@@ -1,6 +1,3 @@
-/* ========== Banner del formulario ==========
-
-*/
 .banner {
     background-image: url("../../img/banner_formulario.png");
     background-repeat: no-repeat;
@@ -14,9 +11,6 @@
 }
 
 
-/* ========== Título del banner ==========
-
-*/
 .banner__titulo {
     font-weight: 600;
     color: var(--white);
@@ -26,24 +20,15 @@
     margin: 0 auto;
 }
 
-/* ========== Contenedor principal ==========
-
-*/
 .container {
     margin: 2em 5em;
 }
 
-/* ========== Bloque del formulario ==========
-
-*/
 .formulario {
     margin: 3em auto;
     width: 30vw;
 }
 
-/* ========== Migas de pan ==========
-
-*/
 .breadcrumb li {
     display: inline;
     font-size: 16px;
@@ -60,24 +45,19 @@
     font-weight: 700;
 }
 
-/* ========== Encabezado del formulario ==========
-
-*/
 .formulario__container {
     margin: 3em 0;
     text-align: center;
 }
 
-/* ========== Campos del formulario ==========
+.formulario__container img.qr {
+    width: 200px;
+}
 
-*/
 .formulario__campo {
     margin-bottom: 2em;
 }
 
-/* ========== Título del formulario ==========
-
-*/
 .formulario__titulo-texto {
     margin: 1em 0;
     font-weight: 600;
@@ -85,22 +65,11 @@
     line-height: 34px;
 }
 
-/* ========== Etiquetas de campo ==========
-
-*/
 .campo__etiqueta {
     font-weight: 500;
     line-height: 20px;
 }
 
-.campo__etiqueta::after {
-    content: " *";
-    color: #8a0f1a;
-}
-
-/* ========== Inputs principales ==========
-
-*/
 .campo__completo {
     display: block;
     border: 2px solid var(--azul-claro);
@@ -111,28 +80,15 @@
 
 }
 
-/* ========== Inputs reducidos ==========
-
-*/
 .campo__completo--menor {
     width: 50%;
 }
 
-/* ========== Texto de términos ==========
-
-*/
 .terminos__texto {
     line-height: 20px;
     display: inline;
 }
 
-.terminos__input {
-    margin-right: 0.5rem;
-}
-
-/* ========== Botones del formulario ==========
-
-*/
 .formulario__boton,
 .camera__boton {
     background: var(--azul-claro);
@@ -147,93 +103,45 @@
     color: var(--white);
 }
 
-/* ========== Imagen del formulario ==========
-
-*/
 .formulario__imagen {
     display: block;
     margin: 2em auto;
 }
 
-.formulario__boton-imagen {
-    background: transparent;
-    border: 0;
-    padding: 0;
-    margin: 0 auto;
-    display: block;
-    cursor: pointer;
-}
-
-/* ========== Imagen oculta ==========
-
-*/
 .formulario__imagen--invisivel {
     display: none;
 }
 
-/* ========== Botón tipo enlace ==========
-
-*/
 .formulario__boton--enlace {
     text-decoration: none;
     width: 50%;
 }
 
-/* ========== Texto auxiliar ==========
-
-*/
 .formulario__texto {
     margin: 1em 8em;
 }
 
-/* ========== Texto en negrita ==========
-
-*/
 .formulario__texto--negrito {
     font-weight: 700;
 }
 
-/* ========== Texto secundario ==========
-
-*/
 .formulario__texto-secundario {
     margin: 2em 6em;
 }
 
-/* ========== Mensajes de error ==========
-
-*/
 .mensaje-error {
-    color: #8a0f1a;
     display: block;
-    margin-top: 0.5rem;
-    font-weight: 600;
+    margin-top: 5px;
+    font-weight: 400;
+    font-style: italic;
+    font-size: .925rem;
+    color: red;
 }
 
-/* ========== Estado de error ==========
-
-*/
 .campo__completo--error {
-    border: 2px solid #8a0f1a;
+    border: 2px solid red;
 }
 
-.campo__completo[aria-invalid="true"] {
-    border-color: #8a0f1a;
-}
-
-.campo__completo[aria-invalid="false"] {
-    border-color: var(--azul-claro);
-}
-
-.formulario__ayuda {
-    margin-top: 0.4rem;
-    font-size: 0.95rem;
-    color: #1a1a1a;
-}
-
-/* ========== Estados ocultos ==========
-
-*/
 .formulario__mensaje,
 .formulario__camera {
     display: none;
@@ -244,9 +152,6 @@
     display: block;
 }
 
-/* ========== Adaptación responsive ==========
-
-*/
 @media screen and (max-width: 900px) {
     .formulario {
         width: 70%;

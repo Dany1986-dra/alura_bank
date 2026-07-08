@@ -43,7 +43,7 @@ alura-bank-main/
 |-- VALIDACION-README.md
 |-- TOOLTIPS-README.md
 |-- PLAN-PRUEBAS-AAA.md
-`-- QA-ACCESIBILIDAD.md
+`-- QA-ACCESIBILIDAD.md ver
 ```
 
 ## Flujo funcional

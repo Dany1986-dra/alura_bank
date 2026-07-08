@@ -1,14 +1,11 @@
-// ========== Mensajes de error personalizados ==========
-export const tipoDeErrores = [
+export const tiposError = [
   "valueMissing",
   "typeMismatch",
   "patternMismatch",
   "tooShort",
   "customError",
 ];
-
-// ========== Mensajes de error para cada campo ==========
- export const mensajes = {
+export const mensajes = {
   nombre: {
     valueMissing: "El campo nombre no puede estar vacío.",
     patternMismatch: "Por favor, ingrese un nombre válido.",
